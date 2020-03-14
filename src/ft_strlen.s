@@ -3,10 +3,10 @@
 
 _ft_strlen:
 			mov		rax, 0
-			jmp		counter
+			jmp		count
 increment:
 			inc		rax
-counter:
+count:
 			cmp		BYTE [rdi + rax], 0
 			jne		increment
 return:

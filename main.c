@@ -6,7 +6,7 @@
 /*   By: sgah <sgah@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/14 04:06:46 by sgah              #+#    #+#             */
-/*   Updated: 2020/03/15 00:13:08 by sgah             ###   ########.fr       */
+/*   Updated: 2020/03/15 00:20:37 by sgah             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ int		main(void)
 	printf("\n--strcpy\n");
 	printf("`%s` (`toto`)\n", ft_strcpy(buffer, "toto"));
 	printf("`%s` (empty)\n", ft_strcpy(buffer, ""));
-	printf("`%s` (`long message`)\n", ft_strcpy(buffer, "long message"));
+	printf("`%s` (`long message but short storie`)\n",
+						ft_strcpy(buffer, "long message but short storie"));
 	printf("`%s` (NULL > not modified)\n", ft_strcpy(buffer, NULL));
 	printf("-done\n");
 	return (0);
