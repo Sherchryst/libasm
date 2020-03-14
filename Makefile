@@ -7,7 +7,7 @@ DIRS	:= $(OBJ_DIR) $(DEP_DIR)
 # FILES
 NAME	= libasm.a
 EXEC	= exec.out
-ASM		= ft_strlen.s
+ASM		= ft_strlen.s ft_strcpy.s
 SRC		= $(ASM)
 OBJ		:= $(SRC:%.s=$(OBJ_DIR)/%.o)
 DEP		:= $(SRC:%.s=$(DEP_DIR)/%.d)
