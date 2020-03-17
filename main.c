@@ -6,7 +6,7 @@
 /*   By: sgah <sgah@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/14 04:06:46 by sgah              #+#    #+#             */
-/*   Updated: 2020/03/15 06:05:01 by sgah             ###   ########.fr       */
+/*   Updated: 2020/03/15 14:40:07 by sgah             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	test_ft_read()
 	close(fd);
 	fd = open("main.c", O_RDONLY);
 	ret = read(fd, buffer, 10);
-	printf("		\x1b[33m<libasm.h>\x1b[0m  %zd - %s\n", ret, strncpy(show, buffer, 10));
+	printf("		\x1b[33mft_ libasm\x1b[0m  %zd - %s\n", ret, strncpy(show, buffer, 10));
 	close(fd);
 	printf("	\x1b[34m[2]\x1b[0m \x1b[36m'open(\"Makefile\", O_RDONLY)' '' '50'\x1b[0m\n");
 	fd = open("Makefile", O_RDONLY);
@@ -52,7 +52,7 @@ void	test_ft_read()
 	close(fd);
 	fd = open("Makefile", O_RDONLY);
 	ret = read(fd, buffer, 50);
-	printf("		\x1b[33m<libasm.h>\x1b[0m  %zd - %s\n", ret, strncpy(show, buffer, 50));
+	printf("		\x1b[33mft_ libasm\x1b[0m  %zd - %s\n", ret, strncpy(show, buffer, 50));
 	close(fd);
 	printf("	\x1b[34m[3]\x1b[0m \x1b[36m'open(\"dontexist\", O_RDONLY)' '' '10'\x1b[0m\n");
 	fd = open("dontexist", O_RDONLY);
@@ -61,7 +61,7 @@ void	test_ft_read()
 	close(fd);
 	fd = open("dontexist", O_RDONLY);
 	ret = read(fd, buffer, 10);
-	printf("		\x1b[33m<libasm.h>\x1b[0m  %zd - %s\n", ret, strncpy(show, buffer, 10));
+	printf("		\x1b[33mft_ libasm\x1b[0m  %zd - %s\n", ret, strncpy(show, buffer, 10));
 	close(fd);
 	printf("	\x1b[34m[4]\x1b[0m \x1b[36m'open(\"main.c\", O_RDONLY)' 'NULL' '10'\x1b[0m\n");
 	fd = open("main.c", O_RDONLY);
@@ -70,20 +70,20 @@ void	test_ft_read()
 	close(fd);
 	fd = open("main.c", O_RDONLY);
 	ret = read(fd, NULL, 10);
-	printf("		\x1b[33m<libasm.h>\x1b[0m  %zd\n", ret);
+	printf("		\x1b[33mft_ libasm\x1b[0m  %zd\n", ret);
 	close(fd);
 	printf("	\x1b[34m[5]\x1b[0m \x1b[36m'42' '' '10'\x1b[0m\n");
 	ret = read(42, buffer, 10);
 	printf("		\x1b[33m<unistd.h>\x1b[0m  %zd - %s\n", ret, strncpy(show, buffer, 10));
 	ret = read(42, buffer, 10);
-	printf("		\x1b[33m<libasm.h>\x1b[0m  %zd - %s\n", ret, strncpy(show, buffer, 10));
+	printf("		\x1b[33mft_ libasm\x1b[0m  %zd - %s\n", ret, strncpy(show, buffer, 10));
 	close(fd);
 	fd = open("empty_file", O_RDONLY | O_TRUNC | O_CREAT, 0777);
 	printf("	\x1b[34m[3]\x1b[0m \x1b[36m'open(\"empty_file\", O_RDONLY | O_TRUNC | O_CREAT, 0777)' '' '10'\x1b[0m\n");
 	ret = read(fd, buffer, 10);
 	printf("		\x1b[33m<unistd.h>\x1b[0m  %zd - %s\n", ret, strncpy(show, buffer, 10));
 	ret = read(fd, buffer, 10);
-	printf("		\x1b[33m<libasm.h>\x1b[0m  %zd - %s\n", ret, strncpy(show, buffer, 10));
+	printf("		\x1b[33mft_ libasm\x1b[0m  %zd - %s\n", ret, strncpy(show, buffer, 10));
 	close(fd);
 	remove("empty_file");
 }
@@ -96,38 +96,38 @@ void	test_ft_write()
 	printf("\x1b[32mft_write :\x1b[0m\n");
 	printf("	\x1b[34m[1]\x1b[0m \x1b[36m'1' '' '0'\x1b[0m\n");
 	printf("		\x1b[33m<unistd.h>\x1b[0m  %zd\n", write(1, "", 0));
-	printf("		\x1b[33m<libasm.h>\x1b[0m  %zd\n", ft_write(1, "", 0));
+	printf("		\x1b[33mft_ libasm\x1b[0m  %zd\n", ft_write(1, "", 0));
 	printf("	\x1b[34m[2]\x1b[0m \x1b[36m'1' 'toto' '4'\x1b[0m\n");
 	printf("		\x1b[33m<unistd.h>\x1b[0m  %zd\n", write(1, "toto", 4));
-	printf("		\x1b[33m<libasm.h>\x1b[0m  %zd\n", ft_write(1, "toto", 4));
+	printf("		\x1b[33mft_ libasm\x1b[0m  %zd\n", ft_write(1, "toto", 4));
 	printf("	\x1b[34m[3]\x1b[0m \x1b[36m'1' 'toto' '2'\x1b[0m\n");
 	printf("		\x1b[33m<unistd.h>\x1b[0m  %zd\n", write(1, "toto", 2));
-	printf("		\x1b[33m<libasm.h>\x1b[0m  %zd\n", ft_write(1, "toto", 2));
+	printf("		\x1b[33mft_ libasm\x1b[0m  %zd\n", ft_write(1, "toto", 2));
 	printf("	\x1b[34m[4]\x1b[0m \x1b[36m'1' 'toto' '40'\x1b[0m\n");
 	printf("		\x1b[33m<unistd.h>\x1b[0m  %zd\n", write(1, "toto", 40));
-	printf("		\x1b[33m<libasm.h>\x1b[0m  %zd\n", ft_write(1, "toto", 40));
+	printf("		\x1b[33mft_ libasm\x1b[0m  %zd\n", ft_write(1, "toto", 40));
 	printf("	\x1b[34m[5]\x1b[0m \x1b[36m'1' 'NULL' '6'\x1b[0m\n");
 	printf("		\x1b[33m<unistd.h>\x1b[0m  %zd\n", write(1, NULL, 6));
-	printf("		\x1b[33m<libasm.h>\x1b[0m  %zd\n", ft_write(1, NULL, 6));
+	printf("		\x1b[33mft_ libasm\x1b[0m  %zd\n", ft_write(1, NULL, 6));
 	printf("	\x1b[34m[6]\x1b[0m \x1b[36m'0' 'toto' '4'\x1b[0m\n");
 	printf("		\x1b[33m<unistd.h>\x1b[0m  %zd\n", write(0, "toto", 4));
-	printf("		\x1b[33m<libasm.h>\x1b[0m  %zd\n", ft_write(0, "toto", 4));
+	printf("		\x1b[33mft_ libasm\x1b[0m  %zd\n", ft_write(0, "toto", 4));
 	printf("	\x1b[34m[7]\x1b[0m \x1b[36m'42' 'toto' '4'\x1b[0m\n");
 	printf("		\x1b[33m<unistd.h>\x1b[0m  %zd\n", write(42, "toto", 4));
-	printf("		\x1b[33m<libasm.h>\x1b[0m  %zd\n", ft_write(42, "toto", 4));
+	printf("		\x1b[33mft_ libasm\x1b[0m  %zd\n", ft_write(42, "toto", 4));
 	printf("	\x1b[34m[8]\x1b[0m \x1b[36m'-1' 'toto' '4'\x1b[0m\n");
 	printf("		\x1b[33m<unistd.h>\x1b[0m  %zd\n", write(-1, "toto", 4));
-	printf("		\x1b[33m<libasm.h>\x1b[0m  %zd\n", ft_write(-1, "toto", 4));
+	printf("		\x1b[33mft_ libasm\x1b[0m  %zd\n", ft_write(-1, "toto", 4));
 	fd = open("ft_write_test", O_WRONLY | O_TRUNC | O_CREAT, 0777);
 	printf("	\x1b[34m[9]\x1b[0m \x1b[36m'open(\"ft_write_test\", O_WRONLY | O_TRUNC | O_CREAT)' '<whichlib.h> toto' '15'\x1b[0m\n");
 	write(fd, "<unistd.h> toto", 15);
-	ft_write(fd, "<libasm.h> toto", 15);
+	ft_write(fd, "ft_ libasm toto", 15);
 	close(fd);
 	fd = open("ft_write_test", O_RDONLY);
 	read(fd, buffer, 15);
 	printf("		\x1b[33m<unistd.h>\x1b[0m  %s\n", buffer);
 	read(fd, buffer, 15);
-	printf("		\x1b[33m<libasm.h>\x1b[0m  %s\n", buffer);
+	printf("		\x1b[33mft_ libasm\x1b[0m  %s\n", buffer);
 	close(fd);
 	remove("ft_write_test");
 }
@@ -137,18 +137,18 @@ void	test_ft_strdup()
 	printf("\x1b[32mft_strdup :\x1b[0m\n");
 	printf("	\x1b[34m[1]\x1b[0m \x1b[36m''\x1b[0m\n");
 	printf("		\x1b[33m<string.h>\x1b[0m  %s\n", strdup(""));
-	printf("		\x1b[33m<libasm.h>\x1b[0m  %s\n", ft_strdup(""));
+	printf("		\x1b[33mft_ libasm\x1b[0m  %s\n", ft_strdup(""));
 	printf("	\x1b[34m[2]\x1b[0m \x1b[36m'qwertyuiop'\x1b[0m\n");
 	printf("		\x1b[33m<string.h>\x1b[0m  %s\n", strdup("qwertyuiop"));
-	printf("		\x1b[33m<libasm.h>\x1b[0m  %s\n", ft_strdup("qwertyuiop"));
+	printf("		\x1b[33mft_ libasm\x1b[0m  %s\n", ft_strdup("qwertyuiop"));
 	printf("	\x1b[34m[3]\x1b[0m \x1b[36m'0123456789abcdefgh'\x1b[0m\n");
 	printf("		\x1b[33m<string.h>\x1b[0m  %s\n",
 								strdup("0123456789abcdefgh"));
-	printf("		\x1b[33m<libasm.h>\x1b[0m  %s\n",
+	printf("		\x1b[33mft_ libasm\x1b[0m  %s\n",
 								ft_strdup("0123456789abcdefgh"));
 	printf("	\x1b[34m[3]\x1b[0m \x1b[36m'NULL'\x1b[0m\n");
 	printf("		\x1b[33m<string.h>\x1b[0m  %s\n", "SEGMENTATION FAULT");
-	printf("		\x1b[33m<libasm.h>\x1b[0m  %s\n", ft_strdup(NULL));
+	printf("		\x1b[33mft_ libasm\x1b[0m  %s\n", ft_strdup(NULL));
 }
 
 void	test_ft_strcmp()
