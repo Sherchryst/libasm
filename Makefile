@@ -16,7 +16,7 @@ DIRS	:= $(OBJ_DIR) $(DEP_DIR)
 NAME	= libasm.a
 EXEC	= exec.out
 ASM		= ft_strlen.s ft_strcpy.s ft_strcmp.s ft_strdup.s ft_write.s ft_read.s
-ASMB	= ft_atoi_base_bonus.s
+ASMB	= ft_atoi_base_bonus.s ft_list_push_front_bonus.s ft_list_size_bonus.s
 SRC		= $(ASM)
 SRCB	= $(ASMB)
 OBJB	= $(SRCB:%.s=$(OBJ_DIR)/%.o)
@@ -58,6 +58,7 @@ fclean: clean
 	@rm -f $(NAME)
 	@echo "\033[1;34mExecute:\t$(_BLUE)Cleaning lib\t\033[31m[OK]$(_END)"
 	@rm -f $(EXEC)
+	@echo "\033[1;34mExecute:\t$(_BLUE)Cleaning Exec\t\033[31m[OK]$(_END)"
 re: fclean all
 
 test:

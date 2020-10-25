@@ -1,40 +1,29 @@
-			section	.text
-			global	_ft_strcmp
+global _ft_strcmp
+
+; int ft_strcmp(const char *s1, const char *s2);
 _ft_strcmp:
-			mov		rdx, 0
-			xor		rcx, rcx
-			cmp		rdi, 0
-			jz		null_case
-			cmp		rsi, 0
-			jz		null_case
-			compare:
-					cmp		BYTE [rdi + rcx], 0
-					jz		null_term
-					cmp		BYTE [rsi + rcx], 0
-					jz		null_term
-					mov		dl, BYTE [rdi + rcx]
-					cmp		dl, BYTE [rsi + rcx]
-					jl		inf_case
-					jg		sup_case
-					inc		rcx
-					jmp		compare
-null_term:
-			mov		dl, BYTE [rdi + rcx]
-			sub		dl, BYTE [rsi + rcx]
-			cmp		dl, 0
-			jz		equal_case
-			jl		inf_case
-null_case:
-			cmp		rdi, rsi
-			jl		inf_case
-			jg		sup_case
-			je		equal_case
-inf_case:
-			mov		rax, -1
-			ret
-sup_case:
-			mov		rax, 1
-			ret
-equal_case:
-			mov		rax, 0
+			push	r12
+			push	r13
+			push	rcx
+			mov		r12, rdi  ; s1
+			mov		r13, rsi  ; s2
+			mov		rcx, -1   ; index
+compare:
+			inc		rcx
+			cmp		byte [r12 + rcx], 0   ; check and of s1
+			je		compare_end
+			mov		dl, byte [r12 + rcx]
+			cmp		dl, byte [r13 + rcx]  ; s1[rcx] == s2[rcx]
+			je		compare
+compare_end:
+			xor		rax, rax
+			mov		al, byte [r12 + rcx]
+			sub		al, byte [r13 + rcx]
+			jnc		fonction_end  ; jump end if no substraction overflow
+			neg		al   ; negate al to cancel overflow
+			neg		eax  ; negate the whole int since the function returns that type
+fonction_end:
+			pop		rcx
+			pop		r13
+			pop		r12
 			ret

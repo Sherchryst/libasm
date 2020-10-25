@@ -1,28 +1,17 @@
 			section	.text
 			global	_ft_write
+			extern	___error
 
 _ft_write:
-	push r8
-	push r9
-	cmp rsi, 0
-	jz error
-	mov r8, rsi
-	mov r9, rdx
-	mov rsi, 0x0
-	mov rax, 0x20000BD
-	syscall
-	cmp rax, 9
-	jz error
-	mov rsi, r8
-	mov rdx, r9
-	mov rax, 0x2000004
-	syscall
-	pop r8
-	pop r9
-	ret
-
+			mov	rax, 0x2000004
+			syscall
+			jc	error
+			ret
 error:
-	mov rax, -1 ; return -1 because error
-	pop r8
-	pop r9
-	ret
+			mov	r15, rax		; save errno 
+			push	r15
+			call	___error		; retrieve address to errno
+			pop	r15
+			mov	[rax], r15		; put errno in return value of __error (pointer to errno)
+			mov	rax, -1
+			ret

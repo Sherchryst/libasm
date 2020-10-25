@@ -6,7 +6,7 @@
 /*   By: sgah <sgah@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/14 04:06:46 by sgah              #+#    #+#             */
-/*   Updated: 2020/03/15 14:40:07 by sgah             ###   ########.fr       */
+/*   Updated: 2020/10/15 01:51:08 by sgah             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	test_ft_read()
 	printf("		\x1b[33m<unistd.h>\x1b[0m  %zd - %s\n", ret, strncpy(show, buffer, 10));
 	close(fd);
 	fd = open("main.c", O_RDONLY);
-	ret = read(fd, buffer, 10);
+	ret = ft_read(fd, buffer, 10);
 	printf("		\x1b[33mft_ libasm\x1b[0m  %zd - %s\n", ret, strncpy(show, buffer, 10));
 	close(fd);
 	printf("	\x1b[34m[2]\x1b[0m \x1b[36m'open(\"Makefile\", O_RDONLY)' '' '50'\x1b[0m\n");
@@ -51,7 +51,7 @@ void	test_ft_read()
 	printf("		\x1b[33m<unistd.h>\x1b[0m  %zd - %s\n", ret, strncpy(show, buffer, 50));
 	close(fd);
 	fd = open("Makefile", O_RDONLY);
-	ret = read(fd, buffer, 50);
+	ret = ft_read(fd, buffer, 50);
 	printf("		\x1b[33mft_ libasm\x1b[0m  %zd - %s\n", ret, strncpy(show, buffer, 50));
 	close(fd);
 	printf("	\x1b[34m[3]\x1b[0m \x1b[36m'open(\"dontexist\", O_RDONLY)' '' '10'\x1b[0m\n");
@@ -60,7 +60,7 @@ void	test_ft_read()
 	printf("		\x1b[33m<unistd.h>\x1b[0m  %zd - %s\n", ret, strncpy(show, buffer, 10));
 	close(fd);
 	fd = open("dontexist", O_RDONLY);
-	ret = read(fd, buffer, 10);
+	ret = ft_read(fd, buffer, 10);
 	printf("		\x1b[33mft_ libasm\x1b[0m  %zd - %s\n", ret, strncpy(show, buffer, 10));
 	close(fd);
 	printf("	\x1b[34m[4]\x1b[0m \x1b[36m'open(\"main.c\", O_RDONLY)' 'NULL' '10'\x1b[0m\n");
@@ -69,20 +69,20 @@ void	test_ft_read()
 	printf("		\x1b[33m<unistd.h>\x1b[0m  %zd\n", ret);
 	close(fd);
 	fd = open("main.c", O_RDONLY);
-	ret = read(fd, NULL, 10);
+	ret = ft_read(fd, NULL, 10);
 	printf("		\x1b[33mft_ libasm\x1b[0m  %zd\n", ret);
 	close(fd);
 	printf("	\x1b[34m[5]\x1b[0m \x1b[36m'42' '' '10'\x1b[0m\n");
 	ret = read(42, buffer, 10);
 	printf("		\x1b[33m<unistd.h>\x1b[0m  %zd - %s\n", ret, strncpy(show, buffer, 10));
-	ret = read(42, buffer, 10);
+	ret = ft_read(42, buffer, 10);
 	printf("		\x1b[33mft_ libasm\x1b[0m  %zd - %s\n", ret, strncpy(show, buffer, 10));
 	close(fd);
 	fd = open("empty_file", O_RDONLY | O_TRUNC | O_CREAT, 0777);
 	printf("	\x1b[34m[3]\x1b[0m \x1b[36m'open(\"empty_file\", O_RDONLY | O_TRUNC | O_CREAT, 0777)' '' '10'\x1b[0m\n");
 	ret = read(fd, buffer, 10);
 	printf("		\x1b[33m<unistd.h>\x1b[0m  %zd - %s\n", ret, strncpy(show, buffer, 10));
-	ret = read(fd, buffer, 10);
+	ret = ft_read(fd, buffer, 10);
 	printf("		\x1b[33mft_ libasm\x1b[0m  %zd - %s\n", ret, strncpy(show, buffer, 10));
 	close(fd);
 	remove("empty_file");
