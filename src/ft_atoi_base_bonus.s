@@ -1,7 +1,7 @@
 section	.text
-			global	_ft_atoi_base
+			global	ft_atoi_base
 
-_ft_atoi_base:
+ft_atoi_base:
 			push	rbx
 			push	r12
 			xor		rax, rax

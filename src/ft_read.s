@@ -1,18 +1,18 @@
 			section	.text
-			global	_ft_read
-			extern	___error
+			global	ft_read
+			extern	__errno_location
 
-_ft_read:
-			mov		rax, 0x2000003
+ft_read:
+			mov		rax, 0
 			syscall
-			jc		error
+			cmp		rax, 0
+			jl		error
 			ret
 
 error:
-			mov	r15, rax		; save errno
-			push	r15
-			call	___error		; retrieve address to errno
-			pop	r15
-			mov	[rax], r15		; put errno in pointer to errno (return value of __error)
+			neg	rax
+			mov	rdi, rax		; save errno
+			call	__errno_location wrt ..plt	; retrieve address to errno_location
+			mov	[rax], rdi		; put errno in pointer to errno (return value of __errno_location)
 			mov	rax, -1
 			ret

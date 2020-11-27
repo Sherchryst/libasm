@@ -1,7 +1,8 @@
-global _ft_strcmp
+			section .text
+			global	ft_strcmp
 
-; int ft_strcmp(const char *s1, const char *s2);
-_ft_strcmp:
+
+ft_strcmp:
 			push	r12
 			push	r13
 			push	rcx

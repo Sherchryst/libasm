@@ -1,14 +1,14 @@
 			section	.text
-			global	_ft_list_push_front
-			extern	_malloc
+			global	ft_list_push_front
+			extern	malloc
 
-_ft_list_push_front:
+ft_list_push_front:
 			push	rsp
 			push	rdi		;rdi = t_list **begin
 			push	rsi		;rsi = void *data
 			mov		rdi, 16
 			xor		rax, rax
-			call	_malloc
+			call	malloc wrt ..plt
 			pop		rsi
 			pop		rdi
 			cmp		rax, 0

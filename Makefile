@@ -26,7 +26,7 @@ DEP		:= $(SRC:%.s=$(DEP_DIR)/%.d)
 # COMPILATION
 NA		= nasm
 CC		= gcc
-NAFLAGS	= -f macho64
+NAFLAGS	= -f elf64
 CFLAGS	= -Wall -Wextra -Werror -Ofast -fno-builtin
 DFLAGS = -M -MP -MD $(DEP_DIR)/$*.d -MT '$@'
 
@@ -75,7 +75,6 @@ $(BUILD):
 $(OBJ_DIR)/%.o: src/%.s | $(BUILD)
 	@echo "\033[1;34mExecute: \t$(_BLUE)Compilation of \033[1;36m$(notdir $<)$(_END)"
 	@$(NA) $(NAFLAGS) -s $< -o $@
-	@$(NA) $(DFLAGS) -o $@ -s $<
 
 -include $(DEP)
 

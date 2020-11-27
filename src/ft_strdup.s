@@ -1,8 +1,8 @@
 			section	.text
-			global	_ft_strdup
-			extern	_malloc
+			global	ft_strdup
+			extern	malloc
 
-_ft_strdup:
+ft_strdup:
 			cmp		rdi, 0
 			jz		error
 init_count:
@@ -17,7 +17,7 @@ allocation:
 			inc		rcx
 			push	rdi
 			mov		rdi, rcx
-			call	_malloc
+			call	malloc wrt ..plt
 			pop		rdi
 			cmp		rax, 0
 			jz		error
