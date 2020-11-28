@@ -6,9 +6,12 @@
 /*   By: sgah <sgah@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/14 04:06:46 by sgah              #+#    #+#             */
-/*   Updated: 2020/11/28 17:44:48 by user42           ###   ########.fr       */
+/*   Updated: 2020/11/28 22:01:15 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef LIBASM_H
+# define LIBASM_H
 
 # include <unistd.h>
 # include <fcntl.h>
@@ -45,6 +48,8 @@ typedef struct		s_list
 
 void			ref_ft_list_push_front(t_list **begin_list, void *data);
 void			ft_list_push_front(t_list **begin_list, void *data);
+int			ref_ft_list_size(t_list *begin_list);
+int			ft_list_size(t_list *begin_list);
 
 int			*create_data_elem(int data);
 t_list			*create_elem(int data);
@@ -56,6 +61,7 @@ void			list_destroy(t_list *list);
 
 
 void            	test_ft_strlen();
+void			test_ft_list_size();
 void            	test_ft_strcpy();
 void			test_ft_strcmp();
 void			test_ft_strdup();
@@ -63,3 +69,5 @@ void			test_ft_write();
 void			test_ft_read();
 void			test_ft_atoi_base();
 void			test_ft_list_push_front();
+
+#endif
