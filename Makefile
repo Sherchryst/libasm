@@ -8,9 +8,8 @@ _ITL		= \033[03m
 
 # DIRECTORIES
 BUILD	= .build
-DEP_DIR = $(BUILD)/dep
 OBJ_DIR = $(BUILD)/obj
-DIRS	:= $(OBJ_DIR) $(DEP_DIR)
+DIRS	:= $(OBJ_DIR)
 
 # FILES
 NAME	= libasm.a
@@ -28,7 +27,6 @@ NA		= nasm
 CC		= gcc
 NAFLAGS	= -f elf64
 CFLAGS	= -Wall -Wextra -Werror -Ofast -fno-builtin
-DFLAGS = -M -MP -MD $(DEP_DIR)/$*.d -MT '$@'
 
 $(NAME): $(OBJ)
 	@ar -rcs $@ $^
@@ -57,8 +55,6 @@ clean:
 fclean: clean
 	@rm -f $(NAME)
 	@echo "\033[1;34mExecute:\t$(_BLUE)Cleaning lib\t\033[31m[OK]$(_END)"
-	@rm -f $(EXEC)
-	@echo "\033[1;34mExecute:\t$(_BLUE)Cleaning Exec\t\033[31m[OK]$(_END)"
 re: fclean all
 
 test:
