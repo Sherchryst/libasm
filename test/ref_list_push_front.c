@@ -1,46 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ref_list_push_front.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgah <sgah@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/14 04:06:46 by sgah              #+#    #+#             */
-/*   Updated: 2020/11/28 17:53:25 by user42           ###   ########.fr       */
+/*   Updated: 2020/11/28 17:40:22 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test.h"
 
-void	clrscr()
+void ref_ft_list_push_front(t_list **begin_list, void *data)
 {
-	system("@cls||clear");
+	if (begin_list == NULL)
+		return ;
+	t_list *new = malloc(sizeof(t_list));
+	if (new == NULL)
+		return ;
+	new->data = data;
+	new->next = *begin_list;
+	*begin_list = new;
 }
 
-int	main(void)
-{
-	clrscr();
-	test_ft_strlen();
-	getchar();
-	clrscr();
-	test_ft_strcpy();
-	getchar();
-	clrscr();
-	test_ft_strcmp();
-	getchar();
-	clrscr();
-	test_ft_strdup();
-	getchar();
-	clrscr();
-	test_ft_write();
-	getchar();
-	clrscr();
-	test_ft_read();
-	getchar();
-	clrscr();
-	test_ft_atoi_base();
-	getchar();
-	clrscr();
-	test_ft_list_push_front();
-	return (0);
-}
