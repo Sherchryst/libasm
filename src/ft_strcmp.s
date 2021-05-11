@@ -11,7 +11,7 @@ ft_strcmp:
 			mov		rcx, -1   ; index
 compare:
 			inc		rcx
-			cmp		byte [r12 + rcx], 0   ; check and of s1
+			cmp		byte [r12 + rcx], 0   ; check end of s1
 			je		compare_end
 			mov		dl, byte [r12 + rcx]
 			cmp		dl, byte [r13 + rcx]  ; s1[rcx] == s2[rcx]
