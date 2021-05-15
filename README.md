@@ -1,5 +1,5 @@
 # Libasm
-L’objectif de ce projet est de devnir familier avec le langage assembleur.
+L’objectif de ce projet est de devenir familier avec le langage assembleur.
 __Libasm__ est un _projet individuel de l'école 42_ où nous devons recoder quelque fonction de la libc en langage d'assembleur.
 
 The goal of this project is to become familiar with assembly language.
