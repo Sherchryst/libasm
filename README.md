@@ -6,7 +6,7 @@ The goal of this project is to become familiar with assembly language.
 __Libasm__ is an _individual project at 42_ where we have to recode some function of the libc in assembly language.
 
 ## What is assembly ?
-Le langage assembleur, souvent appellé asm, est un langage de bas niveau pour ordinateur - ou autre machine programmable - qui possède une très forte correspondance
+Le langage assembleur, souvent appelé asm, est un langage de bas niveau pour ordinateur - ou autre machine programmable - qui possède une très forte correspondance
 entre le langage et l’architecture de la machine.
 
 Assembly language, often referred to as asm, is a low-level language for a computer - or other programmable machine - which has a very strong correspondence
